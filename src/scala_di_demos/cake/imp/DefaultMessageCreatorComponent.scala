@@ -1,6 +1,4 @@
-package scala_di_demos.cake.test.e2e
-
-import scala_di_demos.cake.imp.MessageCreatorComponent
+package scala_di_demos.cake.imp
 
 trait DefaultMessageCreatorComponent extends MessageCreatorComponent{
   def messageCreator: MessageCreator = new MessageCreator {

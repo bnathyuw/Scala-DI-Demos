@@ -1,6 +1,4 @@
-package scala_di_demos.cake.test.e2e
-
-import scala_di_demos.cake.imp.BasketPricerComponent
+package scala_di_demos.cake.imp
 
 trait DefaultBasketPricerComponent extends BasketPricerComponent {
   override def basketPricer: BasketPricer = new BasketPricer {
