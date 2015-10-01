@@ -19,7 +19,7 @@ class TillSpec extends FlatSpec with Matchers with DefaultTillComponent with Bas
   override def messageCreator: MessageCreator = new MessageCreator {
     def create(basket: String, price: Int): String = {
       actualBasketAndPrice = (basket, price)
-      ""
+      "Expected message"
     }
   }
 
@@ -34,9 +34,17 @@ class TillSpec extends FlatSpec with Matchers with DefaultTillComponent with Bas
   it should "get an output message" in {
     val basket = "ABCD"
 
-    till checkOut(basket)
+    till.checkOut(basket)
 
     actualBasketAndPrice should be (basket, 50)
+  }
+
+  it should "return the generated output message" in {
+    val basket = "ABCD"
+
+    val message = till.checkOut(basket)
+
+    message should be ("Expected message")
   }
 }
 

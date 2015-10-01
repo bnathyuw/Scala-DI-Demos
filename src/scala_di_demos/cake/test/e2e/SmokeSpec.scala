@@ -13,11 +13,11 @@ class SmokeSpec extends FlatSpec with Matchers with DefaultTillComponent with Ba
   }
 
   override def basketPricer: BasketPricer = new BasketPricer {
-    override def price(basket: String): Int = 0
+    override def price(basket: String): Int = 115
   }
 
   override def messageCreator: MessageCreator = new MessageCreator{
-    override def create(basket: String, price: Int): String = ""
+    override def create(basket: String, price: Int): String = f"Your basket containing $basket%s costs £$price%2.2f"
   }
 }
 
