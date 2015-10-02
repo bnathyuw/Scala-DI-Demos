@@ -2,46 +2,25 @@ package scala_di_demos.cocktail.test.unit
 
 import org.scalatest.{FlatSpec, Matchers}
 
-import scala_di_demos.cocktail.imp.{MessageCreator, BasketPricer, Till}
+import scala_di_demos.cocktail.imp.{BasketPricer, MessageCreator, Till}
 
 class TillSpec extends FlatSpec with Matchers with BasketPricer with MessageCreator {
-  var actualBasket: String = _
-  var actualBasketAndPrice: (String, Int) = _
+  private val expectedPrice: Int = 50
+  private val expectedMessage: String = "Expected message"
+  private val expectedBasket: String = "ABCD"
 
-  override def price(basket: String): Int = {
-    actualBasket = basket
-    50
+  override def price(basket: String): Int = basket match {
+    case `expectedBasket` => expectedPrice
   }
 
-  override def create(basket: String, price: Int) = {
-    actualBasketAndPrice = (basket, price)
-    "Expected message"
+  override def create(basket: String, price: Int) = (basket, price) match {
+    case (`expectedBasket`, `expectedPrice`) => expectedMessage
   }
 
-  "till" should "get price of basket" in {
+  "till" should "return a message constructed from the basket and its price" in {
     val till = new Till(this, this)
-    val basket = "ABCD"
+    val message = till.checkOut(expectedBasket)
 
-    till.checkOut(basket)
-
-    actualBasket should be(basket)
-  }
-
-  it should "create a message" in {
-    val till = new Till(this, this)
-    val basket = "ABCD"
-
-    till.checkOut(basket)
-
-    actualBasketAndPrice should be(basket, 50)
-  }
-
-  it should "return the message created" in {
-    val till = new Till(this, this)
-    val basket = "ABCD"
-
-    val message = till.checkOut(basket)
-
-    message should be("Expected message")
+    message should be(expectedMessage)
   }
 }
