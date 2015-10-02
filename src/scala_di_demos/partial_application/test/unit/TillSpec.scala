@@ -1,8 +1,8 @@
-package scala_di_demos.scala_di_demos.partial_application.test.unit
+package scala_di_demos.partial_application.test.unit
 
 import org.scalatest.{FlatSpec, Matchers}
 
-import scala_di_demos.scala_di_demos.partial_application.imp.Till
+import scala_di_demos.partial_application.imp.Till
 
 class TillSpec extends FlatSpec with Matchers {
   private val expectedBasket: String = "ABCD"

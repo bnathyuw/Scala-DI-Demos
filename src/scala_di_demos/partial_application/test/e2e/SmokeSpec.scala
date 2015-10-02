@@ -1,8 +1,9 @@
-package scala_di_demos.scala_di_demos.partial_application.test.e2e
+package scala_di_demos.partial_application.test.e2e
 
 import org.scalatest.{FlatSpec, Matchers}
 
-import scala_di_demos.scala_di_demos.partial_application.imp.{MessageCreator, BasketPricer, Till}
+import scala_di_demos.partial_application.imp.{MessageCreator, BasketPricer, Till}
+import scala_di_demos.scala_di_demos.partial_application.imp.MessageCreator
 
 class SmokeSpec extends FlatSpec with Matchers {
   "check out" should "tell you what your basket costs" in {
