@@ -18,7 +18,7 @@ class TillSpec extends FlatSpec with Matchers {
   }
 
   "check out" should "return message" in {
-    val checkOut = Till.checkOut(this.price, this.create)(_)
+    val checkOut = Till.checkOut(price, create)(_)
     val message = checkOut(expectedBasket)
 
     message should be(expectedMessage)
