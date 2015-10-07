@@ -21,6 +21,10 @@ class ItemPricerSpec extends FlatSpec with Matchers {
     ItemPricer.price('B', 1) should be(30)
   }
 
+  it should "price two Bs correctly" in {
+    ItemPricer.price('B', 2) should be (45)
+  }
+
   it should "price one C correctly" in {
     ItemPricer.price('C', 1) should be(20)
   }
