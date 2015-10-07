@@ -9,6 +9,14 @@ class ItemPricerSpec extends FlatSpec with Matchers {
     ItemPricer.price('A', 1) should be(50)
   }
 
+  it should "price two As correctly" in {
+    ItemPricer.price('A', 2) should be(100)
+  }
+
+  it should "price three As correctly" in {
+    ItemPricer.price('A', 3) should be(120)
+  }
+
   it should "price one B correctly" in {
     ItemPricer.price('B', 1) should be(30)
   }
