@@ -5,8 +5,8 @@ object ItemPricer {
     (item, count) => item match {
       case 'A' => count / 3 * 120 + count % 3 * 50
       case 'B' => count / 2 * 45 + count % 2 * 30
-      case 'C' => 20
-      case 'D' => 15
+      case 'C' => count * 20
+      case 'D' => count * 15
     }
   }
 }
