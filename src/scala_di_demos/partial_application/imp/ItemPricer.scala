@@ -8,7 +8,4 @@ object ItemPricer {
   def simplePrice(item: Char, itemPrice: Int): PartialFunction[(Char, Int), Int] = {
     case(`item`, count) => count * itemPrice
   }
-
-  def price(item: Char, count: Int): Int = (discountPrice('A', 50, 3, 120) orElse discountPrice('B', 30, 2, 45) orElse simplePrice('C', 20) orElse simplePrice('D', 15))(item, count)
-
 }

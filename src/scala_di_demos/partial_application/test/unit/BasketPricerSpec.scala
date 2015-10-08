@@ -8,10 +8,11 @@ class BasketPricerSpec extends FlatSpec with Matchers with BeforeAndAfter {
   var actualCalls: List[(Char, Int)] = Nil
   var result: Int = _
 
-  def getPrice(item: Char, count: Int): Int = {
-    val thing: (Char, Int) = (item, count)
-    actualCalls = actualCalls :+ thing
-    count
+  def getPrice: PartialFunction[(Char, Int), Int] = {
+    case (item, count) => {
+      actualCalls = actualCalls :+(item, count)
+      count
+    }
   }
 
   before {
