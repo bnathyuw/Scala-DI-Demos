@@ -40,4 +40,8 @@ class ItemPricerSpec extends FlatSpec with Matchers {
   it should "price four Ds correctly" in {
     ItemPricer.price('D', 4) should be(60)
   }
+
+
 }
+
+
