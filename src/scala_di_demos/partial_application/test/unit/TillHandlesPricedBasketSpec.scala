@@ -1,10 +1,10 @@
 package scala_di_demos.partial_application.test.unit
 
-import org.scalatest.{FlatSpec, Matchers}
+import org.scalatest.{Matchers, FlatSpec}
 
 import scala_di_demos.partial_application.imp.Till
 
-class TillSpec extends FlatSpec with Matchers {
+class TillHandlesPricedBasketSpec extends FlatSpec with Matchers {
   private val expectedBasket: String = "ABCD"
   private val expectedPrice: Int = 50
   private val expectedMessage: String = "Expected message"
