@@ -2,11 +2,12 @@ package scala_di_demos.partial_application.test.unit
 
 import org.scalatest.{BeforeAndAfter, FlatSpec, Matchers}
 
+import scala.util.{Success, Try}
 import scala_di_demos.partial_application.imp.{PriceRule, BasketPricer}
 
 class BasketPricerSpec extends FlatSpec with Matchers with BeforeAndAfter {
   var actualCalls: List[(Char, Int)] = Nil
-  var result: Int = _
+  var result: Try[Int] = _
 
   def getPrice: PriceRule = {
     case (item, count) => {
@@ -32,6 +33,6 @@ class BasketPricerSpec extends FlatSpec with Matchers with BeforeAndAfter {
   }
 
   it should "return the sum of the amounts returned" in {
-    result should be(6)
+    result should be(Success(6))
   }
 }

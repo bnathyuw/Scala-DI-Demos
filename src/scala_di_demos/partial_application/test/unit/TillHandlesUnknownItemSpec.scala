@@ -2,10 +2,11 @@ package scala_di_demos.partial_application.test.unit
 
 import org.scalatest.{FlatSpec, Matchers}
 
+import scala.util.{Failure, Try}
 import scala_di_demos.partial_application.imp.{Till, UnknownItem}
 
 class TillHandlesUnknownItemSpec extends FlatSpec with Matchers {
-  def price(basket: String): Int = throw new UnknownItem('Z')
+  def price(basket: String): Try[Int] = Failure(new UnknownItem('Z'))
 
   def create(basket: String, price: Int): String = ""
 
