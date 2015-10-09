@@ -2,6 +2,7 @@ package scala_di_demos.partial_application.test.unit
 
 import org.scalatest.{FlatSpec, Matchers}
 
+import scala.util.Success
 import scala_di_demos.partial_application.imp.{ItemPricer, PriceRule}
 
 class DiscountPriceSpec extends FlatSpec with Matchers {
@@ -13,24 +14,24 @@ class DiscountPriceSpec extends FlatSpec with Matchers {
   val price: PriceRule = ItemPricer.discountPrice(item, expectedPrice, discountCount, discountPrice)
 
   "discount price" should "price one item correctly" in {
-    price(item, 1) should be (expectedPrice)
+    price(item, 1) should be (Success(expectedPrice))
   }
 
   it should "price an undiscounted group of items correctly" in {
     val numberOfItems: Int = 2
-    price(item, numberOfItems) should be (expectedPrice * numberOfItems)
+    price(item, numberOfItems) should be (Success(expectedPrice * numberOfItems))
   }
 
   it should "price a discount correctly" in {
-    price(item, discountCount) should be (discountPrice)
+    price(item, discountCount) should be (Success(discountPrice))
   }
 
   it should "price a group of items part of which gets a discount correctly" in {
-    price(item, discountCount + 1) should be (discountPrice + expectedPrice)
+    price(item, discountCount + 1) should be (Success(discountPrice + expectedPrice))
   }
 
   it should "price several discounts correctly" in {
     val numberOfDiscounts: Int = 13
-    price(item, discountCount * numberOfDiscounts) should be (discountPrice * numberOfDiscounts)
+    price(item, discountCount * numberOfDiscounts) should be (Success(discountPrice * numberOfDiscounts))
   }
 }
