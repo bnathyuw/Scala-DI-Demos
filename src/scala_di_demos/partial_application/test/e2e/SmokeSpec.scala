@@ -9,6 +9,9 @@ class SmokeSpec extends FlatSpec with Matchers {
     DefaultTill checkOut "ABCD" should be("Your basket containing ABCD costs £115.00")
   }
 
+  it should "give you a helpful message if your basket contains something unexpected" in {
+    DefaultTill checkOut "AB$D" should be ("Unexpected item in bagging area: $")
+  }
 }
 
 

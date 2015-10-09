@@ -6,7 +6,7 @@ object DefaultTill {
     val ruleForB: PriceRule = ItemPricer.discountPrice('B', 30, 2, 45)
     val ruleForC: PriceRule = ItemPricer.simplePrice('C', 20)
     val ruleForD: PriceRule = ItemPricer.simplePrice('D', 15)
-    val priceBasket: (String) => Int = BasketPricer.price(ruleForA, ruleForB, ruleForC, ruleForD)
+    val priceBasket: (String) => Int = BasketPricer.price(ruleForA, ruleForB, ruleForC, ruleForD, ItemPricer.unknownItem)
     val createMessage: (String, Int) => String = MessageCreator.createMessage _
     Till.checkOut(priceBasket, createMessage)(_)
   }

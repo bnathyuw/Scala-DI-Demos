@@ -8,4 +8,8 @@ object ItemPricer {
   def simplePrice(item: Char, itemPrice: Int): PriceRule = {
     case(`item`, count) => count * itemPrice
   }
+
+  def unknownItem: PriceRule = {
+    case(item, _) => throw new UnknownItem(item)
+  }
 }
