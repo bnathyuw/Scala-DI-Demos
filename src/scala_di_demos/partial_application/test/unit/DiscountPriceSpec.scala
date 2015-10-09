@@ -1,8 +1,8 @@
 package scala_di_demos.partial_application.test.unit
 
-import org.scalatest.{Matchers, FlatSpec}
+import org.scalatest.{FlatSpec, Matchers}
 
-import scala_di_demos.partial_application.imp.ItemPricer
+import scala_di_demos.partial_application.imp.{ItemPricer, PriceRule}
 
 class DiscountPriceSpec extends FlatSpec with Matchers {
   val item = 'Z'
@@ -10,7 +10,7 @@ class DiscountPriceSpec extends FlatSpec with Matchers {
   val discountCount: Int = 7
   val discountPrice: Int = 11
 
-  val price: PartialFunction[(Char, Int), Int] = ItemPricer.discountPrice(item, expectedPrice, discountCount, discountPrice)
+  val price: PriceRule = ItemPricer.discountPrice(item, expectedPrice, discountCount, discountPrice)
 
   "discount price" should "price one item correctly" in {
     price(item, 1) should be (expectedPrice)

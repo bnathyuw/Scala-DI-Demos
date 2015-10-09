@@ -2,13 +2,13 @@ package scala_di_demos.partial_application.test.unit
 
 import org.scalatest.{BeforeAndAfter, FlatSpec, Matchers}
 
-import scala_di_demos.partial_application.imp.BasketPricer
+import scala_di_demos.partial_application.imp.{PriceRule, BasketPricer}
 
 class BasketPricerSpec extends FlatSpec with Matchers with BeforeAndAfter {
   var actualCalls: List[(Char, Int)] = Nil
   var result: Int = _
 
-  def getPrice: PartialFunction[(Char, Int), Int] = {
+  def getPrice: PriceRule = {
     case (item, count) => {
       actualCalls = actualCalls :+(item, count)
       count

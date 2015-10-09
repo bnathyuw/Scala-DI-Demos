@@ -1,14 +1,14 @@
 package scala_di_demos.partial_application.test.unit
 
-import org.scalatest.{Matchers, FlatSpec}
+import org.scalatest.{FlatSpec, Matchers}
 
-import scala_di_demos.partial_application.imp.ItemPricer
+import scala_di_demos.partial_application.imp.{ItemPricer, PriceRule}
 
 class SimplePriceSpec extends FlatSpec with Matchers {
   val item = 'Z'
   val expectedPrice = 3
 
-  val price: PartialFunction[(Char, Int), Int] = ItemPricer.simplePrice(item, expectedPrice)
+  val price: PriceRule = ItemPricer.simplePrice(item, expectedPrice)
 
   "simple price" should "price one item correctly" in {
     price(item, 1) should be(expectedPrice)
