@@ -13,6 +13,3 @@ class SmokeSpec extends FlatSpec with Matchers {
     DefaultTill checkOut "AB$D" should be ("Unexpected item in bagging area: $")
   }
 }
-
-
-

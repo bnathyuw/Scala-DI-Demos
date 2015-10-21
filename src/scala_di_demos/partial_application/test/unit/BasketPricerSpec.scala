@@ -10,10 +10,9 @@ class BasketPricerSpec extends FlatSpec with Matchers with BeforeAndAfter {
   var result: Try[Int] = _
 
   def getPrice: PriceRule = {
-    case (item, count) => {
+    case (item, count) =>
       actualCalls = actualCalls :+(item, count)
       Success(count)
-    }
   }
 
   before {
