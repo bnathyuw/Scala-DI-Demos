@@ -1,12 +1,14 @@
 package scala_di_demos.cake.imp
 
-import scala.util.{Success, Try, Failure}
-import scala_di_demos.cake.test.unit.EmptyBasket
+import scala.util.{Failure, Try}
 
 trait DefaultBasketPricerComponent extends BasketPricerComponent {
-  override def basketPricer: BasketPricer = new BasketPricer {
-    override def price(basket: String): Try[Int] = {
-      if(basket == "") Failure(EmptyBasket) else Success(115)
+  this: ItemPricerComponent =>
+
+  override val basketPricer: BasketPricer = new BasketPricer {
+    override def price(basket: String): Try[Int] = basket match {
+      case "" => Failure(EmptyBasket)
+      case b => b.toCharArray().groupBy(identity).map(x => itemPricer.price(x._1, x._2.length)).reduceLeft((y, x) => x.map(z => y.get + z))
     }
   }
 }

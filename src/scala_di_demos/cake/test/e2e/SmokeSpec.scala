@@ -2,9 +2,9 @@ package scala_di_demos.cake.test.e2e
 
 import org.scalatest.{FlatSpec, Matchers}
 
-import scala_di_demos.cake.imp.{DefaultMessageCreatorComponent, DefaultBasketPricerComponent, DefaultTillComponent}
+import scala_di_demos.cake.imp.{DefaultItemPricerComponent, DefaultMessageCreatorComponent, DefaultBasketPricerComponent, DefaultTillComponent}
 
-class SmokeSpec extends FlatSpec with Matchers with DefaultTillComponent with DefaultBasketPricerComponent with DefaultMessageCreatorComponent {
+class SmokeSpec extends FlatSpec with Matchers with DefaultTillComponent with DefaultBasketPricerComponent with DefaultMessageCreatorComponent with DefaultItemPricerComponent {
   "till" should "tell you what your basket costs" in {
     val basket = "ABCD"
 
